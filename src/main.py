@@ -6,4 +6,4 @@ if __name__ == "__main__":
     data_path = os.path.join(parent_path, "data")
     
     eng_toke = Tokenaizer(os.path.join(data_path, "data-set.eng"))
-    print(eng_toke())
+    eng_toke()

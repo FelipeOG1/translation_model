@@ -46,6 +46,9 @@ class Tokenaizer:
         
     def __call__(self):
         tok = self._tokenaize_file()
-        dic = {word:index for index, word in enumerate(self.unique_words)}
-        
-        return [[dic.get(word) for word in sentence] for sentence in tok]
+        word_int_map = {"<UNK>": 0}
+
+        for index, word in enumerate(self.unique_words):
+            word_int_map[word] = index + 1
+            
+        return [[word_int_map.get(word, 0) for word in sentence] for sentence in tok]
