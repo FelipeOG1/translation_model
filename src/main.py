@@ -1,21 +1,9 @@
-import os
 from tokenaizer import Tokenaizer
+from pathlib import Path
+import os
 if __name__ == "__main__":
-    current_dir: str = os.getcwd()
-    spa_path: str = os.path.join(current_dir, "data-set.spa")
-    eng_path: str = os.path.join(current_dir, "data-set.eng")
+    parent_path: str = Path(os.getcwd()).parent
+    data_path = os.path.join(parent_path, "data")
     
-    toke_eng = Tokenaizer(eng_path)
-    toke_spa = Tokenaizer(spa_path)
-
-    toke_spa.build_words_matrix()
-
-    toke_spa.build_dictionary()
-    
-    print(toke_spa.no_idea())
-    
-    
-    
-
-
-
+    eng_toke = Tokenaizer(os.path.join(data_path, "data-set.eng"))
+    print(eng_toke())
